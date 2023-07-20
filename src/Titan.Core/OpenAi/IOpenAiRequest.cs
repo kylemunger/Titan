@@ -17,9 +17,9 @@ namespace Titan.Core.OpenAi
         OpenAiModel Model { get; }
 
         /// <summary>
-        /// Defines a method to get the request information in JSON format for OpenAi.
+        /// Creates a <see cref="JObject"/> that represents the current request and can be sent to OpenAi as part of a request.
         /// </summary>
-        /// <returns>A JObject that represents the JSON format of the request information for OpenAi.</returns>
+        /// <returns>A new <see cref="JObject"/> that represents the current request.</returns>
         JObject GetRequest();
     }
 }
