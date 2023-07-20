@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Titan.Core", "src\Titan.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Uwp", "src\Titan.Uwp\Titan.Uwp.csproj", "{5CFC1DA9-5B06-4C86-BD19-10192C44EBB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Titan.Agents", "Titan.Agents\Titan.Agents.csproj", "{000F9370-730F-441D-847D-2588FA4C9383}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Titan.Agents", "src\Titan.Agents\Titan.Agents.csproj", "{FFD7A628-32A4-4568-BBC1-024DB9B12E39}"
 EndProject
 Global
