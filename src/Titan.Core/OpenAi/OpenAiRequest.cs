@@ -14,7 +14,15 @@ namespace Titan.Core.OpenAi
         /// <inheritdoc/>
         public OpenAiModel Model { get; }
 
-        public OpenAiRequest(OpenAiModel model, List<OpenAiMessage> messages, List<OpenAiFunction> functions) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenAiRequest"/> class using the specified model, messages and functions.
+        /// </summary>
+        /// <param name="model">The OpenAi model for which this request is intended.</param>
+        /// <param name="messages">A list of <see cref="OpenAiMessage"/> instances that represent the messages associated with this request.</param>
+        /// <param name="functions">A list of <see cref="OpenAiFunction"/> instances that represent the function calls to be reported to OpenAi with this request.</param>
+        public OpenAiRequest(OpenAiModel model, List<OpenAiMessage> messages, List<OpenAiFunction> functions) 
+        {
+        }
 
         /// <inheritdoc/>
         public JObject GetRequest()
