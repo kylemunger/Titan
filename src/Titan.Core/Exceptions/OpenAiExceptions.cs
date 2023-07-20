@@ -8,7 +8,7 @@ namespace Titan.Core.Exceptions
     /// <summary>
     /// Represents errors that occur during OpenAI API operations.
     /// </summary>
-    internal class OpenAiApiException : Exception
+    public class OpenAiApiException : Exception
     {
         /// <summary>
         /// Gets or sets the HTTP status code associated with this exception.

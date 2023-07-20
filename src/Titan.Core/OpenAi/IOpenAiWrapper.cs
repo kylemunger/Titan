@@ -8,7 +8,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Defines interface for OpenAi interactions.
     /// </summary>
-    internal interface IOpenAiWrapper
+    public interface IOpenAiWrapper
     {
         /// <summary>
         /// Asynchronously sends a message to OpenAi and retrieves the corresponding response.

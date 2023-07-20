@@ -9,7 +9,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Defines an interface for representing a request to OpenAi.
     /// </summary>
-    internal interface IOpenAiRequest
+    public interface IOpenAiRequest
     {
         /// <summary>
         /// Gets the OpenAiModel enumeration value that represents the model to be used by OpenAi.

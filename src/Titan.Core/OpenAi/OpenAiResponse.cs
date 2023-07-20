@@ -9,7 +9,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Represents a response from the OpenAI API.
     /// </summary>
-    internal class OpenAiResponse
+    public class OpenAiResponse
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenAiResponse"/> class with a specified response content.

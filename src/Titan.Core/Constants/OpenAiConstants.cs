@@ -7,7 +7,7 @@ namespace Titan.Core.Constants
     /// <summary>
     /// Defines a static class that contains constant values related to the OpenAI API.
     /// </summary>
-    internal static class OpenAiConstants
+    public static class OpenAiConstants
     {
         /// <summary>
         /// The URL of the OpenAI API for chat completions.

@@ -9,7 +9,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Represents a class that implements IOpenAiRequest, which contains specific information required for OpenAi requests.
     /// </summary>
-    internal class OpenAiRequest : IOpenAiRequest
+    public class OpenAiRequest : IOpenAiRequest
     {
         /// <inheritdoc/>
         public OpenAiModel Model { get; }

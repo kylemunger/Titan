@@ -13,7 +13,7 @@ namespace Titan.Core.OpenAi
     /// Handles OpenAI requests via the OpenAI API.
     /// Implements the IOpenAiWrapper interface.
     /// </summary>
-    internal class OpenAiWrapper : IOpenAiWrapper
+    public class OpenAiWrapper : IOpenAiWrapper
     {
         /// <summary>
         /// Http client used for HTTP communications.

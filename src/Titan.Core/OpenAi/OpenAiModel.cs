@@ -7,7 +7,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Represents the available OpenAI models.
     /// </summary>
-    internal enum OpenAiModel
+    public enum OpenAiModel
     {
         GPT35,
         GPT4
@@ -16,7 +16,7 @@ namespace Titan.Core.OpenAi
     /// <summary>
     /// Represents a static class with extensions for the <see cref="OpenAiModel"/> enumeration.
     /// </summary>
-    internal static class OpenAiModelExtensions
+    public static class OpenAiModelExtensions
     {
         /// <summary>
         /// Private field containing a dictionary that maps OpenAiModel values to their string representations.
