@@ -14,6 +14,8 @@ namespace Titan.Core.OpenAi
         /// <inheritdoc/>
         public OpenAiModel Model { get; }
 
+        public OpenAiRequest(OpenAiModel model, List<OpenAiMessage> messages, List<OpenAiFunction> functions) { }
+
         /// <inheritdoc/>
         public JObject GetRequest()
         {

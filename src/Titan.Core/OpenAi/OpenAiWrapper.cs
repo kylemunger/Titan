@@ -40,7 +40,7 @@ namespace Titan.Core.OpenAi
         /// <param name="request">The OpenAi request to send.</param>
         /// <returns>Task representing the asynchronous operation with an OpenAi Response as a result.</returns>
         /// <exception cref="OpenAiApiException">Thrown when there is error in communication with OpenAI API.</exception>
-        public async Task<OpenAiResponse> SendMessageAsync(IOpenAiRequest request)
+        public async Task<OpenAiResponse> SendRequestAsync(IOpenAiRequest request)
         {
             var requestMessage = new HttpRequestMessage(HttpMethod.Post, OpenAiConstants.OPENAI_API_CHAT_URL);
             requestMessage.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _apiKey);
