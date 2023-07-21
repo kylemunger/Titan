@@ -48,7 +48,7 @@ namespace Titan.Core.OpenAi
         /// <returns>A JSON object representing this OpenAiFunction.</returns>
         public JObject ToJson()
         {
-            return JObject.Parse("{}");
+            throw new NotImplementedException();
         }
     }
 }

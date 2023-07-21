@@ -17,7 +17,7 @@ namespace Titan.Core.OpenAi
         /// <param name="responseFunctionContent">A JObject instance that represents the returned function from a chat API response.</param>
         public OpenAiFunctionCall(JObject responseFunctionContent)
         {
-
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Titan.Core.OpenAi
         /// <returns>A string that represents the name of the function.</returns>
         public string GetFunctionName() 
         {
-            return string.Empty;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Titan.Core.OpenAi
         /// <returns>An array containing the parameter values of the function.</returns>
         public object[] GetParameterObjects()
         {
-            return new object[1];
+            throw new NotImplementedException();
         }
     }
 }

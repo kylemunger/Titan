@@ -8,7 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ScrollViewer Height="600" Width="500" Margin="10">
+                <TextBlock x:Name="BotResponse" TextWrapping="Wrap"/>
+            </ScrollViewer>
+            <TextBox x:Name="UserInput" PlaceholderText="Enter message" Width="500" Margin="10" KeyDown="UserInput_KeyDown"/>
+            <Button x:Name="SendButton" Content="Send" Click="SendButton_Click" Width="300" HorizontalAlignment="Center" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Page>
