@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Titan.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Titan.Core.Constants.OpenAiConstants">
+            <summary>
+            Defines a static class that contains constant values related to the OpenAI API.
+            </summary>
+        </member>
+        <member name="F:Titan.Core.Constants.OpenAiConstants.OPENAI_API_CHAT_URL">
+            <summary>
+            The URL of the OpenAI API for chat completions.
+            </summary>
+        </member>
+        <member name="T:Titan.Core.Exceptions.OpenAiApiException">
+            <summary>
+            Represents errors that occur during OpenAI API operations.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.Exceptions.OpenAiApiException.StatusCode">
+            <summary>
+            Gets or sets the HTTP status code associated with this exception.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.Exceptions.OpenAiApiException.ResponseContent">
+            <summary>
+            Gets or sets the Response Content associated with this exception.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.Exceptions.OpenAiApiException.#ctor(System.String,System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Titan.Core.Exceptions.OpenAiApiException"/> class with a specified error message, status code and content of the API response.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="statusCode">The HTTP Status Code of the API response.</param>
+            <param name="responseContent">The content of the API response.</param>
+        </member>
+        <member name="T:Titan.Core.OpenAi.IOpenAiRequest">
+            <summary>
+            Defines an interface for representing a request to OpenAi.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.IOpenAiRequest.Model">
+            <summary>
+            Gets the OpenAiModel enumeration value that represents the model to be used by OpenAi.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.IOpenAiRequest.GetRequest">
+            <summary>
+            Creates a <see cref="T:Newtonsoft.Json.Linq.JObject"/> that represents the current request and can be sent to OpenAi as part of a request.
+            </summary>
+            <returns>A new <see cref="T:Newtonsoft.Json.Linq.JObject"/> that represents the current request.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.IOpenAiWrapper">
+            <summary>
+            Defines interface for OpenAi interactions.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.IOpenAiWrapper.SendRequestAsync(Titan.Core.OpenAi.IOpenAiRequest)">
+            <summary>
+            Asynchronously sends a message to OpenAi and retrieves the corresponding response.
+            </summary>
+            <param name="request">The request to send to OpenAi.</param>
+            <returns>A task that represents the asynchronous operation. The task's result is the OpenAi response.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiFunction">
+            <summary>
+            Represents a function that can be executed by agents.
+            Contains metadata necessary for OpenAi request and the ability to invoke the function.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiFunction.Name">
+            <summary>
+            Gets or sets the name of the OpenAI function.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiFunction.Description">
+            <summary>
+            Gets or sets a description of the OpenAI function, providing instruction on its intended use.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiFunction.Parameters">
+            <summary>
+            Gets or sets the parameters of the OpenAI function.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiFunction.#ctor(System.String,System.String,System.Collections.Generic.List{Titan.Core.OpenAi.OpenAiParameter})">
+            <summary>
+            Parameterized constructor for the OpenAiFunction class.
+            </summary>
+            <param name="name">The name of the OpenAI function.</param>
+            <param name="description">A description of the OpenAI function.</param>
+            <param name="parameters">The parameters of the OpenAI function.</param>
+            <param name="functionAction">A delegate pointing to the C# implementation of the OpenAI function.</param>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiFunction.ToJson">
+            <summary>
+            Serializes this OpenAiFunction object for use in OpenAi requests to JSON format.
+            </summary>
+            <returns>A JSON object representing this OpenAiFunction.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiFunctionCall">
+            <summary>
+            The OpenAiFunctionCall class encapsulates a function call intended for execution by an agent.
+            It includes the functionalities to retrieve function name and its parameters.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiFunctionCall.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Initializes a new instance of the OpenAiFunctionCall class.
+            </summary>
+            <param name="responseFunctionContent">A JObject instance that represents the returned function from a chat API response.</param>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiFunctionCall.GetFunctionName">
+            <summary>
+            Retrieves the name of the function encapsulated in this OpenAiFunctionCall instance.
+            </summary>
+            <returns>A string that represents the name of the function.</returns>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiFunctionCall.GetParameterObjects">
+            <summary>
+            Retrieves the parameters of the function encapsulated in this OpenAiFunctionCall instance.
+            </summary>
+            <returns>An array containing the parameter values of the function.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiMessage">
+            <summary>
+            Represents a message for interaction with the OpenAI service. A message can originate
+            from the system, a user, an assistant, or a function.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiMessage.Role">
+            <summary>
+            Gets or sets the role of the message author. This is always one of "system",
+            "user", "assistant", or "function".
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiMessage.Content">
+            <summary>
+            Gets or sets the text contents of the message. This field is required for all
+            message types, and may be null for messages from the assistant that include
+            function calls.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiMessage.Name">
+            <summary>
+            Gets or sets the name of the author of this message. This field is required if 
+            this is a function message, and it should be the name of the function that
+            produced the message content. The name may contain a-z, A-Z, 0-9, and underscores,
+            and has a maximum length of 64 characters.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiMessage.FunctionCall">
+            <summary>
+            Gets or sets the name and arguments of a function call. This property is optional,
+            and is used when the message represents a function that should be called as
+            generated by the model's guidance.
+            </summary>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiModel">
+            <summary>
+            Represents the available OpenAI models.
+            </summary>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiModelExtensions">
+            <summary>
+            Represents a static class with extensions for the <see cref="T:Titan.Core.OpenAi.OpenAiModel"/> enumeration.
+            </summary>
+        </member>
+        <member name="F:Titan.Core.OpenAi.OpenAiModelExtensions._openAiModelToString">
+            <summary>
+            Private field containing a dictionary that maps OpenAiModel values to their string representations.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiModelExtensions.ToString(Titan.Core.OpenAi.OpenAiModel)">
+            <summary>
+            Converts an OpenAiModel to its corresponding string value.
+            </summary>
+            <param name="model">The OpenAiModel to convert.</param>
+            <returns>The string representation of the specified OpenAiModel.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiParameterType">
+            <summary>
+            OpenAiParameterType enumeration defines the types that OpenAI function parameters can possess.
+            </summary>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiParameter">
+            <summary>
+            Represents a parameter for a function that can be called by OpenAI.
+            Contains metadata necessary for OpenAI request and the ability to invoke the function.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiParameter.Name">
+            <summary>
+            Gets or sets the name of the OpenAI function parameter.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiParameter.Description">
+            <summary>
+            Gets or sets a description of the OpenAI function parameter, providing instruction on its intended use.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiParameter.Type">
+            <summary>
+            Gets or sets the type of OpenAiParameterType used by this OpenAI function parameter.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiParameter.Enum">
+            <summary>
+            An optional predetermined list of acceptable values for the OpenAI function parameter.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiParameter.#ctor(System.String,System.String,Titan.Core.OpenAi.OpenAiParameterType,System.Object[])">
+            <summary>
+            Parameterized constructor for the OpenAiParameter class.
+            </summary>
+            <param name="name">The name of the OpenAI function parameter.</param>
+            <param name="description">The description of the OpenAI function parameter.</param>
+            <param name="type">The type of OpenAiParameterType used by this OpenAI function parameter.</param>
+            <param name="typeValues">An optional predetermined list of acceptable values for the OpenAI function parameter.</param>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiParameter.ToJson">
+            <summary>
+            Serializes this OpenAiParameter object for use in OpenAI requests to JSON format.
+            </summary>
+            <returns>A JSON string representing this OpenAiParameter.</returns>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiRequest">
+            <summary>
+            Represents a class that implements IOpenAiRequest, which contains specific information required for OpenAi requests.
+            </summary>
+        </member>
+        <member name="P:Titan.Core.OpenAi.OpenAiRequest.Model">
+            <inheritdoc/>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiRequest.#ctor(Titan.Core.OpenAi.OpenAiModel,System.Collections.Generic.List{Titan.Core.OpenAi.OpenAiMessage},System.Collections.Generic.List{Titan.Core.OpenAi.OpenAiFunction})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Titan.Core.OpenAi.OpenAiRequest"/> class using the specified model, messages and functions.
+            </summary>
+            <param name="model">The OpenAi model for which this request is intended.</param>
+            <param name="messages">A list of <see cref="T:Titan.Core.OpenAi.OpenAiMessage"/> instances that represent the messages associated with this request.</param>
+            <param name="functions">A list of <see cref="T:Titan.Core.OpenAi.OpenAiFunction"/> instances that represent the function calls to be reported to OpenAi with this request.</param>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiRequest.GetRequest">
+            <inheritdoc/>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiResponse">
+            <summary>
+            Represents a response from the OpenAI API.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiResponse.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Titan.Core.OpenAi.OpenAiResponse"/> class with a specified response content.
+            </summary>
+            <param name="responseContent">The content of the response from OpenAI API.</param>
+        </member>
+        <member name="T:Titan.Core.OpenAi.OpenAiWrapper">
+            <summary>
+            Handles OpenAI requests via the OpenAI API.
+            Implements the IOpenAiWrapper interface.
+            </summary>
+        </member>
+        <member name="F:Titan.Core.OpenAi.OpenAiWrapper._httpClient">
+            <summary>
+            Http client used for HTTP communications.
+            </summary>
+        </member>
+        <member name="F:Titan.Core.OpenAi.OpenAiWrapper._apiKey">
+            <summary>
+            The API key used for authenticating with the OpenAI API.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiWrapper.#ctor(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Initialize a new instance of the OpenAiWrapper Class.
+            </summary>
+        </member>
+        <member name="M:Titan.Core.OpenAi.OpenAiWrapper.SendRequestAsync(Titan.Core.OpenAi.IOpenAiRequest)">
+            <summary>
+            Sends a message asynchronously to OpenAi and returns the corresponding response.
+            </summary>
+            <param name="request">The OpenAi request to send.</param>
+            <returns>Task representing the asynchronous operation with an OpenAi Response as a result.</returns>
+            <exception cref="T:Titan.Core.Exceptions.OpenAiApiException">Thrown when there is error in communication with OpenAI API.</exception>
+        </member>
+    </members>
+</doc>

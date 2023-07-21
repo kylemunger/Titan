@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Titan.Agents</name>
+    </assembly>
+    <members>
+        <member name="P:Titan.Agents.AgentTask.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Titan.Agents.AgentTask.Messages">
+            <inheritdoc/>
+        </member>
+        <member name="M:Titan.Agents.AgentTask.#ctor(System.String)">
+            <summary>
+            Initializes a new blank instance of the <see cref="T:Titan.Agents.AgentTask"/> with a singular user message.
+            </summary>
+            <param name="userInput">The user input representing the task request.</param>
+        </member>
+        <member name="M:Titan.Agents.AgentTask.#ctor(System.Collections.Generic.List{Titan.Core.OpenAi.OpenAiMessage})">
+            <summary>
+            Initializes a newinstance of the <see cref="T:Titan.Agents.AgentTask"/> object with a list of messages to send in the request.
+            </summary>
+            <param name="messages">The message list to send in the request.</param>
+        </member>
+        <member name="M:Titan.Agents.AgentTask.IsFunctionCall">
+            <inheritdoc/>
+        </member>
+        <member name="M:Titan.Agents.AgentTask.GetFunctionCall">
+            <inheritdoc/>
+        </member>
+        <member name="T:Titan.Agents.Constants.Agent">
+            <summary>
+            The Agent abstract class represents a generic agent implementation, providing key shared functionalities.
+            Specific agent types will derive from this base class and implement their own unique behaviors.
+            </summary>
+        </member>
+        <member name="M:Titan.Agents.Constants.Agent.#ctor(Titan.Core.OpenAi.IOpenAiWrapper,Titan.Core.OpenAi.OpenAiModel)">
+            <summary>
+            Initializes a new instance of the Agent class.
+            </summary>
+            <param name="wrapper">An IOpenAiWrapper instance for OpenAI chat API interactions.</param>
+            <param name="model">The model used for this particular agent.</param>
+        </member>
+        <member name="P:Titan.Agents.Constants.Agent.Id">
+            <summary>
+            Gets or sets the unique identifier for this instance of the Agent.
+            </summary>
+        </member>
+        <member name="M:Titan.Agents.Constants.Agent.GetAvailableFunctions">
+            <summary>
+            Retrieves a list of available functions that the agent can execute.
+            </summary>
+            <returns>A List of OpenAiFunction objects that can be executed by the agent.</returns>
+        </member>
+        <member name="M:Titan.Agents.Constants.Agent.InvokeAgentTaskAsync(Titan.Agents.IAgentTask)">
+            <summary>
+            Invokes an agent task asynchronously and retrieves a result.
+            </summary>
+            <param name="task">An IAgentTask representing the task to be executed by the Agent.</param>
+            <returns>A Task resulting in the IAgentTaskResult that represents the result of the task execution.</returns>
+        </member>
+        <member name="M:Titan.Agents.Constants.Agent.InvokeFunction(Titan.Core.OpenAi.OpenAiFunctionCall)">
+            <summary>
+            Invokes a specified OpenAiFunctionCall and retrieves the result string.
+            </summary>
+            <param name="functionCall">An OpenAiFunctionCall that represents the function to be invoked.</param>
+            <returns>A Task resulting in a string that represents the result of the function call.</returns>
+        </member>
+        <member name="M:Titan.Agents.Constants.Agent.Dispose">
+            <summary>
+            Performs clean up activities, such as deallocating resources, for an Agent object.
+            </summary>
+        </member>
+        <member name="T:Titan.Agents.IAgent">
+            <summary>
+            Represents an agent which can execute certain tasks and interacts with OpenAI.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgent.Id">
+            <summary>
+            Gets or sets the unique identifier for the agent.
+            </summary>
+        </member>
+        <member name="M:Titan.Agents.IAgent.GetAvailableFunctions">
+            <summary>
+            Retrieves a list of available functions that the agent can execute.
+            </summary>
+            <returns>A list of available functions in the form of OpenAiFunction objects.</returns>
+        </member>
+        <member name="M:Titan.Agents.IAgent.InvokeAgentTaskAsync(Titan.Agents.IAgentTask)">
+            <summary>
+            Executes a given agent task asynchronously.
+            </summary>
+            <param name="task">The agent task to execute.</param>
+            <returns>An AgentTaskResult object that represents the result of the task execution.</returns>
+        </member>
+        <member name="T:Titan.Agents.IAgentTask">
+            <summary>
+            Represents a task that can be executed by an agent.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgentTask.Id">
+            <summary>
+            Gets or sets the unique identifier for the task.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgentTask.Messages">
+            <summary>
+            Gets or sets a list of messages involved in the task execution.
+            </summary>
+        </member>
+        <member name="M:Titan.Agents.IAgentTask.IsFunctionCall">
+            <summary>
+            Determines if the last message in the <see cref="P:Titan.Agents.IAgentTask.Messages"/> list is of the assistant role.
+            If the assistant role is the issuer of the last message and it contains a function call, this method returns true.
+            </summary>
+            <returns><c>true</c> if the last message in the <see cref="P:Titan.Agents.IAgentTask.Messages"/> list is of the assistant role; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Titan.Agents.IAgentTask.GetFunctionCall">
+            <summary>
+            Retrieves the function call from the last message in the <see cref="P:Titan.Agents.IAgentTask.Messages"/> list 
+            if it is of the assistant role and contains a function call. 
+            </summary>
+            <returns>The function call from the last message in the <see cref="P:Titan.Agents.IAgentTask.Messages"/> list, or 
+            <c>null</c> if the last message is not of the assistant role or does not contain a function call.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when a function call is expected but not found.</exception>
+        </member>
+        <member name="T:Titan.Agents.IAgentTaskResult">
+            <summary>
+            Represents the result of a task executed by an agent.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgentTaskResult.TaskId">
+            <summary>
+            Gets or sets the unique identifier for the task which produced this result.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgentTaskResult.Result">
+            <summary>
+            Gets or sets the result of the task execution.
+            </summary>
+        </member>
+        <member name="P:Titan.Agents.IAgentTaskResult.RequestedTask">
+            <summary>
+            Gets or sets the next task that is requested to be executed by the agent. Can be null.
+            </summary>
+        </member>
+        <member name="T:Titan.Agents.SystemControllerAgent">
+            <summary>
+            The SystemControllerAgent class encapsulates the system controller which can manage and interact with other agents.
+            </summary>
+        </member>
+        <member name="M:Titan.Agents.SystemControllerAgent.#ctor(Titan.Core.OpenAi.IOpenAiWrapper,Titan.Core.OpenAi.OpenAiModel)">
+            <summary>
+            Initializes a new instance of the SystemControllerAgent class.
+            </summary>
+            <param name="wrapper">An IOpenAiWrapper instance for OpenAI chat API interactions.</param>
+            <param name="model">The model used for this particular agent.</param>
+        </member>
+        <member name="M:Titan.Agents.SystemControllerAgent.OpenAgent(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Opens a new agent.
+            </summary>
+            <param name="obj">A JObject parameter object that represents the parameters for the function call.</param>
+            <returns>A Task resulting in a string that represents the result of the function call.</returns>
+        </member>
+        <member name="M:Titan.Agents.SystemControllerAgent.CloseAgent(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Closes an existing agent.
+            </summary>
+            <param name="obj">A JObject parameter object that represents the parameters for the function call.</param>
+            <returns>A Task resulting in a string that represents the result of the function call.</returns>
+        </member>
+        <member name="M:Titan.Agents.SystemControllerAgent.SendRequestToAgent(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Sends a request to an open agent.
+            </summary>
+            <param name="obj">A JObject parameter object that represents the parameters for the function call.</param>
+            <returns>A Task resulting in a string that represents the result of the function call.</returns>
+        </member>
+    </members>
+</doc>

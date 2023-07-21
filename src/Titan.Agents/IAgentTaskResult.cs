@@ -10,17 +10,17 @@ namespace Titan.Agents
     public interface IAgentTaskResult
     {
         /// <summary>
-        /// Gets or sets the unique identifier for the task which produced this result.
+        /// Gets the unique identifier for the task which produced this result.
         /// </summary>
         string TaskId { get; }
 
         /// <summary>
-        /// Gets or sets the result of the task execution.
+        /// Gets the result of the task execution.
         /// </summary>
         string Result { get; }
 
         /// <summary>
-        /// Gets or sets the next task that is requested to be executed by the agent. Can be null.
+        /// Gets the next task that is requested to be executed by the agent. Can be null.
         /// </summary>
         IAgentTask RequestedTask { get; }
     }
