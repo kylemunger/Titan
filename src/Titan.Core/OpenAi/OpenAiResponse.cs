@@ -17,6 +17,7 @@ namespace Titan.Core.OpenAi
         /// <param name="responseContent">The content of the response from OpenAI API.</param>
         public OpenAiResponse(JObject responseContent)
         { 
+            throw new NotImplementedException();
         }
     }
 }

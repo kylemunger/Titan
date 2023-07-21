@@ -34,21 +34,21 @@ namespace Titan.Agents
             // Open Agent Function
             List<OpenAiParameter> openAgentParameters = new List<OpenAiParameter>()
             {
-
+                //todo
             };
             OpenAiFunction openAgentFunction = new OpenAiFunction("OpenAgent", "Opens a new agent", openAgentParameters);
 
             // Close Agent Function
             List<OpenAiParameter> closeAgentParameters = new List<OpenAiParameter>()
             {
-
+                //todo
             };
             OpenAiFunction closeAgentFunction = new OpenAiFunction("CloseAgent", "Closes an agent", closeAgentParameters);
 
             // Send Request to Agent Function
             List<OpenAiParameter> sendRequestToAgentParameters = new List<OpenAiParameter>()
             {
-
+                //todo
             };
             OpenAiFunction sendRequestToAgentFunction = new OpenAiFunction("SendRequestToAgent", "Sends a request to an opened agent", sendRequestToAgentParameters);
 
@@ -64,7 +64,6 @@ namespace Titan.Agents
         /// <returns>A Task resulting in a string that represents the result of the function call.</returns>
         private Task<string> OpenAgent(JObject obj)
         {
-            // Implementation to open agent
             throw new NotImplementedException();
         }
 
@@ -75,7 +74,6 @@ namespace Titan.Agents
         /// <returns>A Task resulting in a string that represents the result of the function call.</returns>
         private Task<string> CloseAgent(JObject obj)
         {
-            // Implementation to close agent
             throw new NotImplementedException();
         }
 
@@ -86,7 +84,6 @@ namespace Titan.Agents
         /// <returns>A Task resulting in a string that represents the result of the function call.</returns>
         private Task<string> SendRequestToAgent(JObject obj)
         {
-            // Implementation to send request to agent
             throw new NotImplementedException();
         }
     }

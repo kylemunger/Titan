@@ -155,6 +155,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Titan.Agents\Titan.Agents.csproj">
+      <Project>{ffd7a628-32a4-4568-bbc1-024db9b12e39}</Project>
+      <Name>Titan.Agents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Titan.Core\Titan.Core.csproj">
       <Project>{bae28ee3-8ae4-4bca-8fbb-a3132bcdb786}</Project>
       <Name>Titan.Core</Name>
