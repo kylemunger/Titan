@@ -15,6 +15,7 @@ namespace Titan.Agents
 
         public AgentTaskResult(IAgentTask task, OpenAiResponse response) 
         {
+            throw new NotImplementedException();
         }
     }
 }

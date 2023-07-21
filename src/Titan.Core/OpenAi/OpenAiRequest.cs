@@ -22,12 +22,13 @@ namespace Titan.Core.OpenAi
         /// <param name="functions">A list of <see cref="OpenAiFunction"/> instances that represent the function calls to be reported to OpenAi with this request.</param>
         public OpenAiRequest(OpenAiModel model, List<OpenAiMessage> messages, List<OpenAiFunction> functions) 
         {
+            throw new NotImplementedException();
         }
 
         /// <inheritdoc/>
         public JObject GetRequest()
         {
-            return new JObject();
+            throw new NotImplementedException();
         }
     }
 }
